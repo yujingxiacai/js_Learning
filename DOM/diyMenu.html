@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>diyMenu</title>
+</head>
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+  #menu{
+      width: 150px;
+      display: none;
+      position: absolute;
+  }
+    #menu li{
+
+        height: 30px;
+        line-height: 30px;
+        background: cadetblue;
+        text-align: center;
+        font-size: 15px;
+        font-weight: bold;
+        color: seashell;
+        opacity: .6;
+        border-bottom: 1px dashed #cccccc;
+        /*display: none;*/
+        list-style: none;
+    }
+    #menu li:active{
+        background: #cccccc;
+    }
+    /*#menu:last-child{*/
+        /*border-bottom: 1px solid cadetblue;*/
+    /*}*/
+
+
+</style>
+<body>
+<ul id="menu">
+    <li>菜单01</li>
+    <li>菜单02</li>
+    <li>菜单03</li>
+    <li>菜单04</li>
+    <li>菜单05</li>
+</ul>
+
+<script>
+    var oMenu=document.getElementById('menu');
+    var aLi=oMenu.getElementsByTagName('li');
+     document.oncontextmenu=function (e) {
+         e =e||window.event;
+         oMenu.style.top=e.clientY+'px';
+         oMenu.style.left=e.clientX+'px';
+        oMenu.style.display='block';
+        return false;
+    }
+document.onclick=function () {
+    oMenu.style.display='none';
+}
+    for(var i=0;i<aLi.length;i++){
+         aLi[i].onclick=function () {
+             alert(this.innerHTML);
+         }
+    }
+
+</script>
+</body>
+</html>
