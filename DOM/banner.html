@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin: 100px auto;
+            width: 700px;
+            /*height: 500px;*/
+            position: relative;
+        }
+
+        img {
+            width: 700px;
+            /*height: 300px;*/
+        }
+
+        .container .focus-pointer {
+            position: absolute;
+            top: 300px;
+            right: 50%;
+            transform: translateX(50%);
+        }
+
+        .container .focus-pointer li {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: transparent;
+            border: 1px solid;
+            list-style: none;
+            float: right;
+            margin: 0 3px;
+            cursor: pointer;
+        }
+
+        .left, .right {
+            width: 40px;
+            height: 40px;
+            background: #999999;
+            opacity: .5;
+            line-height: 40px;
+            text-align: center;
+        }
+
+        .container .l-r .left {
+
+            float: left;
+        }
+
+        .container .l-r .right {
+            float: right;
+        }
+
+        .container .l-r {
+            position: absolute;
+            top: 200px;
+            /*margin-top: -27%;*/
+        }
+
+        .container .focus-pointer .focus-change {
+            background: #33ffff;
+        }
+
+        #imges img {
+            display: none;
+        }
+
+        #imges .img-selected {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="container-id">
+
+
+    <div class="imge" id="imges">
+        <img src="img/lunbotu1.jpg" alt="" class="img-selected">
+        <img src="img/lunbotu2.jpg" alt="">
+        <img src="img/lunbotu3.jpg" alt="">
+        <img src="img/lunbotu4.jpg" alt="">
+        <img src="img/lunbotu5.png" alt="">
+    </div>
+
+    <ul class="focus-pointer" id="focus-radius">
+        <li class="focus-change"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    <div class="l-r" id="control-dot" style="width: 700px;">
+        <div class="left" id="font"> &vartriangleleft;</div>
+        <div class="right" id="rear">&vartriangleright;</div>
+    </div>
+</div>
+
+<script>
+    var oImg = document.getElementById('imges');
+    var aImg = oImg.getElementsByTagName('img');
+
+    var oUL = document.getElementById('focus-radius');
+    var aLi = oUL.getElementsByTagName('li');
+
+    var oDiv = document.getElementById('control-dot');
+    var aDiv = oDiv.getElementsByTagName('div');
+    var oFont=document.getElementById('font');
+    var oRear=document.getElementById('rear');
+    var oContainer=document.getElementById('container-id');
+
+    var H=0;
+    for (var i = 0; i < aLi.length; i++) {
+        aLi[i].n=i;
+        aLi[i].onmouseover = function () {
+            for (var j = 0; j < aLi.length; j++) {
+                aLi[j].className = '';
+                aImg[j].className='';
+            }
+            this.className = 'focus-change';
+           aImg[this.n] .className='img-selected';
+           H=this.n;
+        }
+    }
+    oFont.onclick=oRear.onclick=function () {
+        if(this===oFont){
+            H++;
+            if(H===5){
+                H=0;
+            }
+           change();
+
+        }else{
+            H--;
+            if(H===-1){
+                H=4;
+            }
+           change();
+
+        }
+    }
+
+    function f() {
+
+        if(this===oFont){
+            H++;
+            if(H===5){
+                H=0;
+            }
+            change();
+
+        }else{
+            H--;
+            if(H===-1){
+                H=4;
+            }
+            change();
+
+        }
+    }
+function change() {
+    for (var j = 0; j < aLi.length; j++) {
+        aLi[j].className = '';
+        aImg[j].className='';
+    }
+    aLi[H].className='focus-change';
+    aImg[H].className='img-selected';
+}
+
+var timer=setInterval(function () {
+    f();
+},2000);
+    oContainer.onmouseover=function () {
+        clearInterval(timer);
+    }
+oContainer.onmouseout=function () {
+    timer=setInterval(function () {
+        f();
+    },2000);
+}
+</script>
+</body>
+</html>

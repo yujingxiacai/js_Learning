@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Diy-select</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 400px;
+            height: 300px;
+            border: 1px solid ;
+            margin: 100px auto;
+
+        }
+        .select{
+            background:#cccccc ;
+            border-bottom: 1px solid;
+
+        }
+        .select li{
+            list-style: none;
+            float: left;
+            width: 100px;
+            cursor: pointer;
+
+        }
+        .selected-list{
+            background: #000;
+            color: #ffffff;
+        }
+        .item-s{
+            /*background: #808080 ;*/
+            margin-right: 15px;
+            text-align: center;
+
+            height: 30px;
+            line-height:30px;
+        }
+        .clearfix:after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        #content div{
+            display: none;
+        }
+        #content .selected-c{
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <ul class="select clearfix" id="u-l">
+        <li class="item-s">syk</li>
+        <li class="item-s">yujingxiacai</li>
+        <li class="item-s">shenyukang</li>
+    </ul>
+
+    <div class="select-content" id="content">
+        <div class="selected-c">01</div>
+        <div>02</div>
+        <div>03</div>
+    </div>
+</div>
+
+<script>
+    var oUL=document.getElementById('u-l');
+    var aLi=oUL.getElementsByTagName('li');
+    var oDiv=document.getElementById('content');
+    var aDiv=oDiv.getElementsByTagName('div');
+
+    for(var i=0;i<aLi.length;i++){
+        aLi[i].n=i;
+        aLi[i].onclick=function () {
+            for(var j=0;j<aLi.length;j++){
+                aLi[j].className='item-s';
+                aDiv[j].className='';
+            }
+            this.className += ' selected-list';
+             aDiv[this.n].className='selected-c';
+             console.log(this.n);
+        }
+
+    }
+
+</script>
+</body>
+</html>
