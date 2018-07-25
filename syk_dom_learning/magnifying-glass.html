@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>magnifying-glass</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .source img {
+            width: 300px;
+            cursor: pointer;
+        }
+
+        .source .magnifying {
+            width: 100px;
+            height: 100px;
+            opacity: .5;
+            background: #ffffff;
+            display: none;
+        }
+
+        .source .mask {
+            width: 300px;
+            height: 300px;
+            opacity: 0;
+            background: #cccccc;
+        }
+
+        .source .magnifying, .source .mask {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .container {
+            margin-left: 50px;
+        }
+
+        .container, .source {
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<div class="source">
+    <img src="img/lunbotu3.jpg" alt=""  id="source-img">
+    <div class="magnifying" id="mag"></div>
+    <div class="mask" id="mask"></div>
+</div>
+<div class="container" >
+    <img src="img/lunbotu3.jpg" alt="" id="Big-img">
+</div>
+
+<script>
+   var oSourceImg=document.getElementById('source-img');
+   var oMag=document.getElementById('mag');
+   var oMask=document.getElementById('mask');
+   var oBigImg=document.getElementById('Big-img');
+
+   oMask.onmouseover=function (e) {
+       e=e||window.event;
+       oMag.style.display='block';
+       oMag.style.top=e.clientX
+   }
+</script>
+</body>
+</html>
