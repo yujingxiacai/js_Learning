@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>transition-banner</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+         /*position: relative;*/
+
+        }
+        .imgs{
+            position: relative;
+            height: 360px;
+        }
+
+        #Div div{
+            position: absolute;
+            top: 0;
+            left: 0;
+            text-align: center;
+            width: 100%;
+            opacity: 0;/*这里设置初始状态全透明
+            因为后面的默认第一张图片加了一个selected样式，所以一张一默认显示的*/
+            transition: all 3s ease;
+        }
+        .imgs .banner1{
+
+            background: #2f668a;
+
+        }
+        .imgs .banner1 img{
+            width: 800px;
+        }
+        .imgs .banner2{
+            background: #6a239f;
+
+        }
+        li{
+            list-style: none;
+        }
+        .focus-on{
+            position: absolute;
+            z-index: 999;
+            right: 50%;
+            transform: translateX(50%);
+        }
+        .focus-on li{
+            width: 20px;
+            height: 3px;
+            background: black;
+            opacity: .5;
+            margin-right: 8px;
+            float: left;
+            cursor: pointer;
+
+        }
+        .focus-on .focused {
+            background: #ffffff;
+            opacity: .6;
+        }
+       #Div  .selected {
+
+            z-index: 1;
+           opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div class="imgs" id="Div">
+        <div class="banner1 selected">
+            <img src="img/lunbotu1.jpg" alt="">
+        </div>
+        <div class="banner2">
+            <img src="img/lunbotu4.jpg" alt="">
+        </div>
+    </div>
+
+    <ul class="focus-on" id="UL">
+        <li class="li1 focused"></li>
+        <li></li>
+    </ul>
+    
+</div>
+
+<script>
+var oImgs=document.getElementById('Div');
+var aImg=oImgs.getElementsByTagName('div');
+var oUL=document.getElementById('UL');
+var aLi=oUL.getElementsByTagName('li');
+
+for(var i=0;i<aLi.length;i++){
+    aLi[i].index=i;
+    aLi[i].onmouseover=function () {
+        for(var j=0;j<aImg.length;j++){
+            aImg[j].className='banner'+(j+1);
+            aLi[j].className='';
+            // console.log(yes+j);
+        }
+        this.className='focused';
+        // console.log(yes);
+        aImg[this.index].className +=' selected';
+    }
+
+}
+</script>
+</body>
+</html>
