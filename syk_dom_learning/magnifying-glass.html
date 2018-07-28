@@ -11,7 +11,7 @@
         }
 
         .source img {
-            width: 300px;
+            width: 200px;
             cursor: pointer;
         }
 
@@ -24,8 +24,8 @@
         }
 
         .source .mask {
-            width: 300px;
-            height: 300px;
+            width: 200px;
+            height: 200px;
             opacity: 0;
             background: #cccccc;
         }
@@ -37,35 +37,88 @@
         }
 
         .container {
-            margin-left: 50px;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+
+        }
+
+        .container #Big-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
         }
 
         .container, .source {
             float: left;
+            position: relative;
         }
     </style>
 </head>
 <body>
 <div class="source">
-    <img src="img/lunbotu3.jpg" alt=""  id="source-img">
+    <img src="img/lunbotu3.jpg" alt="" id="source-img">
     <div class="magnifying" id="mag"></div>
     <div class="mask" id="mask"></div>
 </div>
-<div class="container" >
+<div class="container" id="img">
     <img src="img/lunbotu3.jpg" alt="" id="Big-img">
 </div>
 
 <script>
-   var oSourceImg=document.getElementById('source-img');
-   var oMag=document.getElementById('mag');
-   var oMask=document.getElementById('mask');
-   var oBigImg=document.getElementById('Big-img');
+    var oSourceImg = document.getElementById('source-img');//小照片
+    var oMag = document.getElementById('mag');//放大镜框
+    var oMask = document.getElementById('mask');//遮罩层
+    var oDiv=document.getElementById('img');
+    var oBigImg = document.getElementById('Big-img');//放大图片
 
-   oMask.onmouseover=function (e) {
-       e=e||window.event;
-       oMag.style.display='block';
-       oMag.style.top=e.clientX
-   }
+    oMask.onmouseover = function (e) {
+        e = e || window.event;
+        oMag.style.display = 'block';
+        oBigImg.style.display = 'block';
+
+    }
+    oMask.onmouseout = function () {
+        oMag.style.display = 'none';
+        oBigImg.style.display = 'none';
+    };
+    oMask.onmousemove = function (e) {
+        e=e||window.event;
+        var top = e.clientY - oMag.offsetHeight / 2;
+        // console.log(oMag.offsetHeight);
+        var left = e.clientX - oMag.offsetWidth / 2;
+        // oMag.style.top = e.clientX+;
+
+        // console.log(oMag.offsetHeight);
+        if(top<0){
+            top=0;
+        }
+        if(left<0){
+            left=0;
+        }
+
+        var leftMax=oMask.offsetWidth-oMag.offsetWidth;
+        var topMax=oMask.offsetHeight-oMag.offsetHeight;
+        if(top>topMax){
+            top=topMax;
+        }
+        if(left>leftMax){
+            left=leftMax;
+        }
+        oMag.style.top = top + 'px';
+        oMag.style.left = left + 'px';
+
+
+
+     //获取比列
+    var dragDansX = oMag.offsetLeft / leftMax;
+    var dragDansY =  oMag.offsetTop / topMax;
+
+    // 设置大图片的位置
+    oBigImg.style.left = -dragDansX * (oBigImg.offsetWidth - oDiv.offsetWidth) + 'px';
+    oBigImg.style.top = -dragDansY * (oBigImg.offsetHeight - oDiv.offsetHeight) + 'px';
+    }
 </script>
 </body>
 </html>
