@@ -4,50 +4,58 @@
     <meta charset="UTF-8">
     <title>JQ_selector</title>
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
         }
-        .container{
+
+        .container {
             width: 400px;
             height: 300px;
-            border: 1px solid ;
+            border: 1px solid;
             margin: 100px auto;
 
         }
-        .select{
-            background:#cccccc ;
+
+        .select {
+            background: #cccccc;
             border-bottom: 1px solid;
 
         }
-        .select li{
+
+        .select li {
             list-style: none;
             float: left;
             width: 100px;
             cursor: pointer;
 
         }
-        .selected-list{
+
+        .selected-list {
             background: #000;
             color: #ffffff;
         }
-        .item-s{
+
+        .item-s {
             /*background: #808080 ;*/
             margin-right: 15px;
             text-align: center;
 
             height: 30px;
-            line-height:30px;
+            line-height: 30px;
         }
-        .clearfix:after{
+
+        .clearfix:after {
             content: '';
             display: block;
             clear: both;
         }
-        #content div{
+
+        #content div {
             display: none;
         }
-        #content .selected-c{
+
+        #content .selected-c {
             display: block;
         }
 
@@ -71,9 +79,12 @@
 <script src="jquery-1.12.4.js"></script>
 <script>
     $(function () {
-         // console.log(typeof $);
-        $('#u-l li').on('click',function () {
-            console.log(this);
+        // console.log(typeof $);
+        $('#u-l li').on('click', function () {
+            $(this).addClass('selected-list').siblings().removeClass('selected-list');//添加class同时将兄弟元素的class移除
+            $('#content div').eq($(this).index()).addClass('selected-c').siblings().removeClass('selected-c');
+            //改变下面内容框显示的内容。
+
         });
 
     });
