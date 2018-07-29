@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>changSkin</title>
+    <style>
+        .select{
+            height: 50px;
+            background: #000000;
+            /*text-align: center;*/
+            line-height: 50px;
+        }
+        .skin{
+            width: 1200px;
+            height: 600px;
+
+            margin: 10px auto;
+        }
+        .select li{
+            border-radius: 30px;
+            width: 30px;
+            height: 30px;
+            float: left;
+            list-style: none;
+
+        }
+        .select .selected{
+            opacity: .5;
+        }
+        .skined1{
+            background:#cccccc;
+        }
+        .skined2{
+            background:#33ffff ;
+        }
+        .skined3{
+            background:#6a239f ;
+        }
+
+    </style>
+</head>
+<body>
+<!--换肤选择按钮-->
+<ul class="select">
+    <li class="selected" style="background: #cccccc ;"></li>
+    <li style="background:#33ffff ;"></li>
+    <li style="background:#6a239f ;"></li>
+</ul>
+
+
+<!--具体肤色显示位置-->
+<div class="skin skined1"></div>
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+    $(function(){
+        $('.select li').on('click',function () {
+        $(this).addClass('selected').siblings().removeClass('selected');
+        $('div').removeClass('skined1 skined2 skined3').addClass(' skined'+($(this).index()+1));
+        });
+
+    });
+</script>
+</body>
+</html>
