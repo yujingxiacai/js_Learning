@@ -52,13 +52,35 @@
 <div class="skin skined1"></div>
 
 <script src="jquery-1.12.4.js"></script>
+<script src="jquery.cookie.js"></script>
 <script>
     $(function(){
-        $('.select li').on('click',function () {
-        $(this).addClass('selected').siblings().removeClass('selected');
-        $('div').removeClass('skined1 skined2 skined3').addClass(' skined'+($(this).index()+1));
+        // $('.select li').on('click',function () {
+        // $(this).addClass('selected').siblings().removeClass('selected');
+        // $('div').removeClass('skined1 skined2 skined3').addClass(' skined'+($(this).index()+1));
+        // });
+
+
+        if($.cookie('skin')){
+            $('.select li').eq($.cookie('skin')).addClass('selected').siblings().removeClass('selected');//怎么索引标点的？有待解决！！！！
+            // console.log(typeof ($.cookie('skin')));//输出的是1 string
+
+            $('div').removeClass('skined1 skined2 skined3').addClass(' skined'+(parseInt($.cookie('skin'))+1));
+            // changeSkin($.cookie('skin'));
+        }
+
+        $('.select li').on('click', function(){
+            changeSkin($(this).index());//获取从0-2的id传给函数
+            $(this).addClass('selected').siblings().removeClass('selected');
+            $.cookie('skin', $(this).index(), {expires: 30});//第一个参数相当于是给你所要存储的对象一个名字，第二个参数是你索要存储的对象，第三个值是一个对象，表示你所存储的cookie保质期距存储的时的时长。
+            // $.cookie('selected',$(this).)
         });
 
+        function changeSkin(id){
+            $('div').removeClass('skined1 skined2 skined3').addClass(' skined'+(id+1));
+            // $('#' + id).addClass('selected').siblings().removeClass('selected');
+            // $('#cssfile').attr('href', 'css/'+ id +'.css');
+        }
     });
 </script>
 </body>
