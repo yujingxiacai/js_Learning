@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文本域大小改变</title>
+    <style type="text/css">
+        * { margin:0; padding:0;font:normal 12px/17px Arial; }
+        .msg {width:300px; margin:100px; }
+        .msg_caption { width:100%; overflow:hidden; margin-bottom:1px;}
+        .msg_caption span { display:block; float:left; margin:0 2px; padding:4px 10px; background:#898989; cursor:pointer;color:white; }
+        .msg textarea{ width:300px; height:80px;height:100px;border:1px solid #000;}
+    </style>
+</head>
+<body>
+<form action="" method="post">
+    <div class="msg">
+        <div class="msg_caption">
+            <span class="bigger" >放大</span>
+            <span class="smaller" >缩小</span>
+        </div>
+        <div>
+            <textarea id="comment" rows="8" cols="20">多行文本框高度变化.多行文本框高度变化.多行文本框高度变化.多行文本框高度变化.多行文本框高度变化.多行文本框高度变化.多行文本框高度变化.多行文本框高度变化.多行文本框高度变化.</textarea>
+        </div>
+    </div>
+</form>
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+    $(function () {
+        //普通操作
+        // $('.msg_caption .bigger').on('click',function () {
+        //     console.log($('#comment').height());
+        //     $('.msg #comment').css('height',$('#comment').height()+10+'px');
+        // });
+        // $('.msg_caption .smaller').on('click',function () {
+        //     console.log($('#comment').height());
+        //     $('.msg #comment').css('height',$('#comment').height()-10+'px');
+        // })
+        
+        //事件委托方式绑定事件操作
+        $('.msg_caption ').on('click','span',function (e) {
+          console.log($(e.target).attr('class')) ;
+            if($(event.target).attr('class')=='smaller'){
+                console.log($(event.target).attr('class')) ;
+                $('.msg #comment').css('height',$('#comment').height()-10+'px');
+            }else{
+                console.log($(event.target).attr('class')) ;
+                $('.msg #comment').css('height',$('#comment').height()+10+'px');
+            }
+        })
+    });
+</script>
+</body>
+</html>
