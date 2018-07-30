@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hover</title>
+    <style>
+        .container{
+            margin: 100px auto;
+            width: 1200px;
+
+        }
+        .menu li{
+            float: left;
+            border-radius: 10px;
+            width: 20px;
+            height: 20px;
+            background: gold;
+            text-align: center;
+            line-height: 20px;
+            list-style: none;
+            margin-right: 20px;
+            margin-bottom: 20px;
+        }
+        .img{
+            text-align: center;
+
+        }
+        .img img{
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="menu">
+    <ul>
+        <li>1</li>
+        <li>2</li>
+    </ul>
+    </div>
+    <div class="img">
+        <img src="img/lunbotu7.PNG" alt="" id="banner1">
+        <img src="img/lunbotu5.png" alt="" id="banner2">
+    </div>
+</div>
+<script src="jquery-1.12.4.js"></script>
+<script>
+    $(function () {
+        $('.menu ul li').hover(
+            function () {
+                $('img').eq($(this).index()).css('display','block');
+            },//鼠标悬停到时的处理函数
+            function () {
+                $('img').css('display','none');
+
+            }//鼠标移走时的事件处理函数
+        )
+    })
+</script>
+</body>
+</html>
