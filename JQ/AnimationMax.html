@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    .container{
+    width: 200px;
+    height: 200px;
+    background: #33ffff;
+    margin-top: 20px;
+        
+    }
+    </style>
+</head>
+<body>
+<div class="button1">
+    <button id="animation">
+       animation
+    </button>
+</div>
+
+
+<div class="container">
+
+</div>
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+    $(function () {
+        $('#animation').on('click',function () {
+            $('.container').animate({
+               width:'0',
+                opacity: '.5',
+                display:'none'
+                },4000,function () {
+                
+                }
+            )
+        })
+    })
+</script>
+</body>
+</html>
