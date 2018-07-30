@@ -3,8 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .container{
+            width: 200px;
+            height: 200px;
+            background: #33ffff;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
+<div class="button1">
+    <button id="hide">
+        hide
+    </button>
+    <button id="show">
+        show
+    </button>
+    <button id="toggle">
+        toggle
+    </button>
 
+</div>
+
+
+<div class="container">
+
+</div>
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+    $(function () {
+        $('.button1').on('click','button',function(e){
+            // $('.container').hide('slow');
+            console.log($(e.target).attr('id'));
+            console.log(typeof $(e.target).attr('id'));
+            // console.log($(e.target).attr('id')=='hide' );//之前测试一直报错是因为上面id都空了一个空格，等于说现在判断‘ hide’==？‘hide’
+            if($(e.target).attr('id') ==='hide'){
+                console.log($(e.target).attr('id'));
+                 $('.container').stop().hide('slow');
+            }else if($(e.target).attr('id') ==='show'){
+
+                $('.container').stop().show('fast');
+            }else if($(e.target).attr('id') ==='toggle'){
+
+                $('.container').stop().toggle('2000');
+            }
+        })
+    })
+</script>
 </body>
 </html>
