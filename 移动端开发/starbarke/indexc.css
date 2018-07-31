@@ -143,6 +143,14 @@
     position: absolute;
     bottom:50px ;
 }
+.wrapper{
+    /*width: 100%;*/
+    float: right;
+    margin-left: 456px;
+}
+.wrapper img{
+    width: 100%;
+}
 /*基本样式结束*/
 
 /*左侧点击菜单展开事件开始*/
