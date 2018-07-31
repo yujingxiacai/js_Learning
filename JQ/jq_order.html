@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>oreder</title>
+    <style>
+        div{
+            width: 300px;
+            height: 300px;
+            background:#33ffff;
+            opacity: .6;
+        }
+        p{
+            width: 300px;
+            height:200px;
+            background: #FFF38F;
+            
+        }
+    </style>
+</head>
+<body>
+<div>
+    <p>yes</p>
+</div>
+<script src="jquery-1.12.4.js"></script>
+<script>
+    $(function () {
+        $('div').on('click',function () {
+            $('p').show('slow');
+            console.log('1号位置输出了,执行了show');
+            console.log(' ');
+        });
+        $('div').on('click','p',function () {
+            $('p').hide(5000);
+            console.log('2号位置输出了,执行了hide');
+            console.log(' ');
+        })
+        
+        //此处执行的顺序:如果你点击的是p标签位置，会先执行p，然后再执行上面的div标签处的操作，这就是对于绑定了事件委托的的事件，我们遵从事案件冒泡，从子元素冒泡到父元素。所以这里是逆序执行的
+    //    如果我们先点击的是div并且避开了点击p标签则会出现先执行1，然后就不往后执行了。因为按照事件模型，事件源现在就是点击的目标，也就是div，没有点击p所以p没进入事件队列
+    })
+</script>
+</body>
+</html>

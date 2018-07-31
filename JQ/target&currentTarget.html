@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        li{
+            list-style:none;
+            background: gold;
+            width: 100px;
+            height: 100px;
+            margin-top:10px;
+
+        }
+    </style>
+</head>
+<body>
+<ul class="ul" id="ul">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+<script src="jquery-1.12.4.js"></script>
+<script>
+
+    var oUl=document.getElementById('ul');
+    var ali=oUl.getElementsByTagName('li');
+    oUl.onclick=function(e){
+        console.log(this);//返回当前的ul
+        console.log(e.currentTarget);//返回当前的ul
+        console.log(e.target);//返回当前点击的对象
+        console.log(' ' );
+        // target 属性可以是注册事件时的元素，或者它的子元素
+    }
+
+
+
+
+    //下面的jq函数，如果你点击的是ul，而避开了li则第一个函数输出，第二个则没进入事件队列，所以没有触发。
+    $(function () {
+        $('.ul').on('click',function (e) {
+
+            //没有事件绑定
+            console.log(e.currentTarget);//点击li时返回的是ul
+
+            console.log(e.target);//点击li时时返回的li
+            console.log( ' 第一个jq对象');
+        });
+
+
+        $('.ul').on('click','li',function (e) {//点击li时才能触发
+            console.log(e.currentTarget);//点击li返回li
+
+
+            console.log(e.target);//点击li返回li
+            console.log('第二个jq对象 ' );
+        })
+
+    //    这里如果点击的是li，则会先执行第二个事件委托的jq对象函数，然后事件冒泡执行到第一个jq对象函数。
+    })
+</script>
+</body>
+</html>
