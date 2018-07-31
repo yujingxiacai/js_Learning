@@ -1,0 +1,153 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.menu{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 456px;
+    background: #FFFFFF;
+    /*border-right: 1px solid #CCCCCC;*/
+    box-shadow: 2px 0px 5px 0 rgba(207, 207, 207, .4);
+    overflow: hidden;
+}
+.menu .header{
+    width: 100%;
+    height: 96px;
+    /*background: #33ffff;*/
+}
+.menu .register{
+
+}
+.header .header-wrapper{
+    padding: 24px 24px;
+}
+.header img{
+    vertical-align: middle;
+    width: 36px;
+    margin-right: 12px;
+}
+.header-wrapper a{
+    color: #000;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    padding: 5px 10px;
+
+}
+.header-wrapper  a i{
+    font-size: 25px;
+    font-weight: bolder;
+    color: #CCCCCC;
+    text-align: center;
+    margin-left: 100px;
+    margin-right: 10px;
+}
+.register{
+    position: absolute;
+    top: 50%;
+    right: -15%;
+    transform: translate(-50%, -50%);
+}
+.register p{
+    font-size: 26px;
+    font-weight: bolder;
+    padding:20px 10px;
+}
+.register-side img{
+    vertical-align: middle;
+}
+.register-side a{
+    text-decoration: none;
+    color: #03a964;
+    margin-right: 20px;
+    margin-left: 10px;
+}
+.register-side .register-bar{
+    border-radius: 20px;
+    border:2px solid #03a964;
+    text-align: center;
+    width: 50px;
+    display: inline-block;
+
+}
+ #click{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+    /*left: 80px;*/
+    /*scaleX(1.5);*/
+    /*scaleY(1.5);*/
+    background: #fff;
+    /*opacity: .3;*/
+    /*padding-right: 30px;*/
+    transition: all .5s ease;
+    opacity: 0;
+
+}
+.menu .click-after .list{
+    width: 100%;
+    margin-left: 84px;
+    margin-right: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+}
+.menu .click-after .list ul{
+    width: 360px;
+
+}
+.menu .list li{
+    padding: 8px 0;
+    font-size: 18px;
+    font-weight: bolder;
+}
+.menu .list li a{
+    text-decoration: none;
+    color: #000;
+
+}
+.menu .list .menu-list .underline{
+    border-bottom: 1px solid #CCCCCC;
+}
+.menu .click-after .header-wrapper i{
+    position: absolute;
+    top:24px;
+    right: 65px;
+}
+.click-after .menu-footer .top a{
+    font-size: 14px;
+    color: #9e9e9e;
+    text-decoration: none;
+
+}
+.click-after .menu-footer .bottom a{
+    font-size: 9px;
+    color: #9e9e9e;
+    text-decoration: none;
+}
+.click-after .menu-footer,.click-after .list-register{
+    /*margin-top: 10px;*/
+    margin-left: 75px;
+    clear: both;
+}
+.click-after .menu-footer{
+    position: absolute;
+    bottom:50px ;
+}
+/*基本样式结束*/
+
+/*左侧点击菜单展开事件开始*/
+/*.menu .header .header-wrapper #a:active .click-after {*/
+   /*z-index: 3;*/
+    /*opacity: 1;*/
+/*}*/
+/*左侧点击菜单展开事件结束*/
