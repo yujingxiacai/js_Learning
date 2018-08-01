@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+
+        }
+        body{
+            height: 2000px;
+        }
+
+        .container{
+            /*position: absolute;*/
+            /*top: 0;*/
+            /*bottom: 0;*/
+            /*left: 0;*/
+            /*right: 0;*/
+            /*上面的这种充满是充满一个浏览器的但是如果body高度非常大时，我们可以通过滑动，然后上面定位的部分就滑动到上面去了，固定定位的元素撑开的面积也是固定，*/
+
+            width: 100%;
+            height: 100%;
+            /*上面通过子元素设置百分比是相对于父元素而言的这一属性来设置充满整个父元素，这时不论body多高多大，我们总能充满福父元素*/
+
+
+            display: -webkit-flex;/*一般还是加上内核*/
+        }
+        #div1{
+            flex-grow: 1;
+            /*position: fixed;*/
+            /*top: 0;*/
+            /*bottom: 0;*/
+            /*left: 0;*/
+            background: #ff6600;
+        }
+        #div2{
+            flex-grow: 2;
+            background: #FFF38F;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div id="div1">
+       1.
+    </div>
+    <div id="div2">
+
+    </div>
+</div>
+
+</body>
+</html>
