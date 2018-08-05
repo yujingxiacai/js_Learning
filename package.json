@@ -1,0 +1,24 @@
+{
+  "name": "js_Learning",
+  "version": "1.0.0",
+  "description": "这是我学习js的心路",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yujingxiacai/js_Learning.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yujingxiacai/js_Learning/issues"
+  },
+  "homepage": "https://github.com/yujingxiacai/js_Learning#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1"
+  }
+}
